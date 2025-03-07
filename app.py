@@ -126,27 +126,29 @@ def translate_sentence(model, sentence, src_vocab, trg_vocab, device):
 
     return translated_sentence
 
-# --- Streamlit UI ---
+# --- Streamlit UI --- 
 st.markdown("""
     <style>
     body {
-        background-color: #f4f4f4;
+        background-color: #f0f4f8;
+        font-family: 'Arial', sans-serif;
     }
-    .big-title {
+    .header {
         font-size: 36px;
         font-weight: bold;
         color: #2c3e50;
         text-align: center;
     }
-    .small-text {
-        font-size: 18px;
-        color: #34495e;
+    .subheader {
+        font-size: 20px;
+        color: #7f8c8d;
         text-align: center;
     }
     .stTextArea textarea {
         border-radius: 12px;
-        padding: 10px;
+        padding: 15px;
         font-size: 18px;
+        border: 2px solid #ccc;
     }
     .stButton button {
         border-radius: 8px;
@@ -156,13 +158,16 @@ st.markdown("""
         color: white;
         border: none;
     }
+    .stButton button:hover {
+        background-color: #2ecc71;
+    }
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<h1 class='big-title'>🌍 Arabic to English Translator</h1>", unsafe_allow_html=True)
-st.markdown("<p class='small-text'>Translate Arabic text to English with AI-powered accuracy! 🚀</p>", unsafe_allow_html=True)
+st.markdown("<h1 class='header'>🌍 Arabic to English Translator</h1>", unsafe_allow_html=True)
+st.markdown("<p class='subheader'>Translate Arabic text to English with AI-powered accuracy! 🚀</p>", unsafe_allow_html=True)
 
-input_text = st.text_area("✍️ Enter Arabic Sentence:", "")
+input_text = st.text_area("✍️ Enter Arabic Sentence:", "", height=150)
 
 if st.button("🎯 Translate"):
     if input_text.strip():
@@ -170,4 +175,3 @@ if st.button("🎯 Translate"):
         st.markdown(f"### 🎉 Translation: \n ✅ {translated_text}")
     else:
         st.warning("⚠️ Please enter a valid Arabic sentence.")
-
