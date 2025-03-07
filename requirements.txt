@@ -2,3 +2,8 @@ streamlit
 torch
 nltk
 pyarabic
+transformers
+sentence_transformers
+pandas
+numpy
+scipy           
