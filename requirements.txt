@@ -6,4 +6,5 @@ transformers
 sentence_transformers
 pandas
 numpy
-scipy           
+scipy     
+pickle      
