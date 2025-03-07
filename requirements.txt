@@ -1,10 +1,5 @@
 streamlit
 torch
+torchtext
 nltk
 pyarabic
-transformers
-sentence_transformers
-pandas
-numpy
-scipy     
-pickle      
