@@ -8,19 +8,28 @@ from nltk.tokenize.treebank import TreebankWordDetokenizer
 import pyarabic.araby as araby
 import os
 
+# Debugging: List all files in the current directory to confirm file paths
+st.write("📂 Files in Current Directory:", os.listdir())
+
 # Ensure all required files exist
 REQUIRED_FILES = ["model.pt", "src_vocab.pkl", "trg_vocab.pkl"]
 for file in REQUIRED_FILES:
-    assert os.path.exists(file), f"❌ Error: {file} is missing. Please upload it."
+    if not os.path.exists(file):
+        st.error(f"❌ Error: `{file}` is missing. Please upload it.")
+        st.stop()  # Stop further execution if files are missing
 
-# Load vocabularies
+# Load vocabularies with proper error handling
 @st.cache_resource
 def load_vocab():
-    with open("src_vocab.pkl", "rb") as f:
-        src_vocab = pickle.load(f)
-    with open("trg_vocab.pkl", "rb") as f:
-        trg_vocab = pickle.load(f)
-    return src_vocab, trg_vocab
+    try:
+        with open("src_vocab.pkl", "rb") as f:
+            src_vocab = pickle.load(f)
+        with open("trg_vocab.pkl", "rb") as f:
+            trg_vocab = pickle.load(f)
+        return src_vocab, trg_vocab
+    except Exception as e:
+        st.error(f"❌ Failed to load vocabulary files: {e}")
+        st.stop()  # Stop execution if there's an error loading files
 
 src_vocab, trg_vocab = load_vocab()
 
