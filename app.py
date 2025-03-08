@@ -18,8 +18,7 @@ for file in REQUIRED_FILES:
         st.error(f"❌ Error: `{file}` is missing. Please upload it.")
         st.stop()  # Stop further execution if files are missing
 
-# Load vocabularies with proper error handling
-@st.cache_resource
+# Load vocabularies without caching
 def load_vocab():
     try:
         with open("src_vocab.pkl", "rb") as f:
