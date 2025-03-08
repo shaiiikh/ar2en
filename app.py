@@ -8,9 +8,6 @@ from nltk.tokenize.treebank import TreebankWordDetokenizer
 import pyarabic.araby as araby
 import os
 
-# Debugging: List all files in the current directory to confirm file paths
-st.write("📂 Files in Current Directory:", os.listdir())
-
 # Ensure all required files exist
 REQUIRED_FILES = ["model.pt", "src_vocab.pkl", "trg_vocab.pkl"]
 for file in REQUIRED_FILES:
